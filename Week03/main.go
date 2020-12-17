@@ -61,6 +61,7 @@ func processSignal(ctx context.Context, ch chan os.Signal) error {
 
 func main() {
 
+	// Remark
 	// done := make(chan error, 2)
 	// stop := make(chan struct{})
 	// go func() {
@@ -79,6 +80,7 @@ func main() {
 	// 		close(stop)
 	// 	}
 	// }
+
 	g, ctx := errgroup.WithContext(context.Background())
 	g.Go(func() error {
 		return serveApp(ctx)
@@ -97,4 +99,5 @@ func main() {
 	if err := g.Wait(); err != nil {
 		log.Printf("Server Error:%v\n", err)
 	}
+	
 }
